@@ -1,8 +1,11 @@
 'use strict';
 
-app.controller('UserDetailCtrl', function ($scope, user, Story) {
+app.controller('UserDetailCtrl', function ($scope, user, Story, authFactory) {
 	$scope.user = user;
 	$scope.newStory = new Story({author: $scope.user});
+	$scope.canEdit = function(){
+		return authFactory.getUser().isAdmin;
+	};
 	$scope.addStory = function () {
 		$scope.newStory.save()
 		.then(function (story) {

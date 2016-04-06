@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('userItem', function () {
+app.directive('userItem', function (authFactory) {
 	return {
 		restrict: 'E',
 		templateUrl: '/browser/app/user/item/user.item.html',
@@ -24,6 +24,10 @@ app.directive('userItem', function () {
 					scope.user.isDestroyed = true;
 				});
 			};
+			scope.canEdit = function() {
+				console.log("running canEdit from user directive")
+				return authFactory.getUser().isAdmin;
+			}
 		}
 	}
 });

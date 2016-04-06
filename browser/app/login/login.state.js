@@ -7,10 +7,6 @@ app.config(function ($stateProvider) {
 		controller: 'LoginCtrl'
 	});
 
-	// $stateProvider.state('logout', {
-	// 	url: '/logout',
-	// 	controller: 'LoginCtrl'
-	// })
 });
 
 app.controller('LoginCtrl', function ($scope, $state, authFactory) {
